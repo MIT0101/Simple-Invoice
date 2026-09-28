@@ -4,6 +4,8 @@ A small self-hosted app for freelance software engineering, consulting and devel
 invoice, save it as a draft, review the PDF, post it (which numbers and locks it), then download or print it.
 It runs on Next.js with a local SQLite database, and ships with Docker Compose.
 
+![Creating an invoice, saving it as a draft and posting it](docs/demo.gif)
+
 ## Features
 
 - **Settings**: the name, title, contact details, payment details and signature image shown on every invoice,
@@ -15,6 +17,29 @@ It runs on Next.js with a local SQLite database, and ships with Docker Compose.
   one.
 - **PDF**: in-app preview, download and print, with clickable work links. Simple layout, no logo.
 - **Duplicate** an invoice to start the next one for the same client.
+
+## Screenshots
+
+**Invoices**: drafts and posted invoices, filterable by status.
+
+![Invoice list](docs/screenshots/invoices.png)
+
+**Invoice editor**: each line item has a service title, a description, a link to its work-unit PDF, a quantity
+and a unit price. The total updates as you type.
+
+![Line items in the invoice editor](docs/screenshots/invoice-editor.png)
+
+**Invoice page**: PDF preview with download, print, duplicate and post actions.
+
+![Posted invoice with its PDF preview](docs/screenshots/invoice-page.png)
+
+**Generated PDF**: what the client receives.
+
+<img src="docs/screenshots/invoice-pdf.png" alt="Generated invoice PDF" width="640">
+
+**Settings**: your details, payment details, signature and invoice defaults.
+
+![Settings page](docs/screenshots/settings.png)
 
 ## Quick start (Docker)
 
@@ -120,6 +145,7 @@ src/
   server/       data access for invoices and settings
   proxy.ts      optional HTTP Basic Auth
 drizzle/        generated SQL migrations
+docs/           README screenshots and demo GIF
 ```
 
 ## Tech stack
