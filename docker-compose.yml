@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    image: invoice-generator
+    ports:
+      # Published on localhost only: the app has no user accounts (see README).
+      - "127.0.0.1:${PORT:-3000}:3000"
+    environment:
+      TZ: ${TZ:-UTC}
+      BASIC_AUTH_USER: ${BASIC_AUTH_USER:-}
+      BASIC_AUTH_PASSWORD: ${BASIC_AUTH_PASSWORD:-}
+    volumes:
+      # Named volume: SQLite (WAL mode) is unreliable on Docker Desktop bind mounts.
+      - invoice-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  invoice-data:
