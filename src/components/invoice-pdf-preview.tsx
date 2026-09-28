@@ -5,7 +5,7 @@ export function InvoicePdfPreview({ invoiceId, version }: { invoiceId: number; v
   return (
     <div className="space-y-2">
       <iframe
-        src={`${pdfUrl}#view=FitH`}
+        src={`${pdfUrl}#zoom=page-width`}
         title="Invoice PDF preview"
         className="h-[80vh] min-h-[600px] w-full rounded-lg border border-zinc-200 bg-white shadow-xs"
       />
