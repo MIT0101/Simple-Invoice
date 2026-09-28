@@ -115,13 +115,19 @@ describe("invoiceFormSchema", () => {
     });
   });
 
-  it("caps the unit price at 100 million", () => {
-    expect(invoiceFormSchema.parse(invoiceValues({ items: [lineItem({ unitPrice: "100000000" })] })).items[0].unitPriceCents).toBe(
-      10_000_000_000,
+  it("caps the unit price at 1 billion", () => {
+    expect(invoiceFormSchema.parse(invoiceValues({ items: [lineItem({ unitPrice: "1000000000" })] })).items[0].unitPriceCents).toBe(
+      100_000_000_000,
     );
-    expect(invoiceErrors(invoiceValues({ items: [lineItem({ unitPrice: "100000000.01" })] }))).toEqual({
+    expect(invoiceErrors(invoiceValues({ items: [lineItem({ unitPrice: "1000000000.01" })] }))).toEqual({
       "items.0.unitPrice": "Amount is too large",
     });
+  });
+
+  it("accepts IQD, a currency without minor units", () => {
+    const parsed = invoiceFormSchema.parse(invoiceValues({ currency: "iqd", items: [lineItem({ unitPrice: "1,500,000" })] }));
+    expect(parsed.currency).toBe("IQD");
+    expect(parsed.items[0].unitPriceCents).toBe(150_000_000);
   });
 
   it.each(["0", "-1", "abc", "100001"])("rejects the quantity %j", (quantity) => {

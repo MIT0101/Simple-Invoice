@@ -106,6 +106,7 @@ describe("formatMoney", () => {
   it("uses each currency's own number of decimals", () => {
     expect(normalizeSpaces(formatMoney(125050, "KWD"))).toBe("KWD 1,250.500");
     expect(normalizeSpaces(formatMoney(125000, "JPY"))).toBe("JPY 1,250");
+    expect(normalizeSpaces(formatMoney(150_000_000, "IQD"))).toBe("IQD 1,500,000");
   });
 
   it("uses a non-breaking space so the amount never wraps away from its code", () => {

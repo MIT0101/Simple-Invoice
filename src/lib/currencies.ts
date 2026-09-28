@@ -9,6 +9,7 @@ export const COMMON_CURRENCIES = [
   "KWD",
   "BHD",
   "OMR",
+  "IQD",
   "JOD",
   "EGP",
   "TRY",

@@ -2,7 +2,7 @@ import { z } from "zod";
 import { isSupportedCurrency } from "./currencies";
 import { parseMoneyToCents, parseQuantity } from "./money";
 
-export const MAX_UNIT_PRICE_CENTS = 100_000_000_00; // 100 million
+export const MAX_UNIT_PRICE_CENTS = 1_000_000_000_00; // 1 billion (room for large-denomination currencies like IQD)
 export const MAX_QUANTITY = 100_000;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
